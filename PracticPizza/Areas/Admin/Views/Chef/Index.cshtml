@@ -1,0 +1,51 @@
+﻿@model List<Chef>
+
+@{
+    int count = 0;
+}
+
+<div class="col-lg-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <a asp-action="create" asp-controller="chef" class="btn btn-danger">Create Table</a>
+            
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Photo</th>
+                            <th>Name</th>
+                            <th>Department</th>
+                            <th>Settings</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+
+                        @foreach (Chef chef in Model)
+                        {
+                            count++;
+                            <tr>
+                                <td>@count</td>
+                                <td>
+                                    <img src="~/uploads/@chef.Image">
+                                   
+                                </td>
+                                <td>@chef.Name</td>
+                                <td>@chef.Department</td>
+                                <td>
+                                    <a asp-action="update" asp-controller="chef" asp-route-id="@chef.Id" class="btn btn-primary">Update</a>
+                                    <a asp-action="delete" asp-controller="chef" asp-route-id ="@chef.Id" class="btn btn-danger"> Delete</a>
+
+                                </td>
+                            </tr>
+                        }
+
+                       
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
